@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace KBGDLib
+namespace KBGDLib.Helpers
 {
     public static class SpatialHelper
     {

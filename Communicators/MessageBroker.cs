@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace KBGDLib
+namespace KBGDLib.Comms
 {
     public static class MessageLibrary // Static library to hold a list of static message types. Good for keeping magic string literals out of the messaging system. 
     {

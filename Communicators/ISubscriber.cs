@@ -1,4 +1,4 @@
-namespace KBGDLib
+namespace KBGDLib.Comms
 {
     public interface ISubscriber // Allows subscription to specific messages via the MessageBroker
     {

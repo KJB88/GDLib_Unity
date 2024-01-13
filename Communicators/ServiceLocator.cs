@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KBGDLib
+namespace KBGDLib.Comms
 {
     public enum SERVICE_TYPE
     {
