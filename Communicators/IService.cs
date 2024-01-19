@@ -1,4 +1,4 @@
-namespace KBGDLib.Comms
+namespace KBGDLib.Communicators
 {
     public interface IService // Interface to define Services via composition
     {

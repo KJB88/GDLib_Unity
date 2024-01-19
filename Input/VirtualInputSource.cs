@@ -2,7 +2,7 @@ namespace KBGDLib.Input
 {
     public sealed class VirtualInputSource : InputSource // Swaps device-specific and platform-specific inputs to a common device-agnostic, platform-agnostic common input schema.
     {
-        public VirtualInputDevice()
+        public VirtualInputSource()
         {
             // Configure resources for the VID - this includes hooking into the input handlers for Unity
         }

@@ -1,8 +1,8 @@
-using KBGDLib.Comms;
+using KBGDLib.Communicators;
 
 namespace KBGDLib.Input
 {
-    public abstract class InputSource, IService // Base class for input sources so we can treat AI and Player driven input the same in states, reducing edge case handler code.
+    public abstract class InputSource : IService // Base class for input sources so we can treat AI and Player driven input the same in states, reducing edge case handler code.
     {
         float xMovement = 0;
         public float XMovement => xMovement;

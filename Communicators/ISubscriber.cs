@@ -1,4 +1,4 @@
-namespace KBGDLib.Comms
+namespace KBGDLib.Communicators
 {
     public interface ISubscriber // Allows subscription to specific messages via the MessageBroker
     {
@@ -7,6 +7,6 @@ namespace KBGDLib.Comms
         /// </summary>
         /// <param name="msg">string: The message.</param>
         /// <returns>Bool: Consume message if true. Passthrough message if false.</returns>
-        public bool Receive(string msg);
+        public bool Receive(Message msg);
     }
 }

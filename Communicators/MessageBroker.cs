@@ -1,13 +1,7 @@
 using System.Collections.Generic;
 
-namespace KBGDLib.Comms
+namespace KBGDLib.Communicators
 {
-    public static class MessageLibrary // Static library to hold a list of static message types. Good for keeping magic string literals out of the messaging system. 
-    {
-        public static string HEALTH_CHANGED = "HealthChanged";
-        public static string PLAYER_DIED = "PlayerDied";
-    }
-
     public sealed class MessageBroker : IService // Message Broker to update other systems when this entity's state changes.
     {
         Dictionary<string, List<ISubscriber>> subscribers = new Dictionary<string, List<ISubscriber>>();
@@ -34,12 +28,12 @@ namespace KBGDLib.Comms
             subscribers[msg].Remove(subscriber);
         }
 
-        public void SendMessage(string msg)
+        public void SendMessage(Message msg)
         {
-            if (!subscribers.ContainsKey(msg))
+            if (!subscribers.ContainsKey(msg.MessageType))
                 return;
 
-            foreach (ISubscriber subscriber in subscribers[msg])
+            foreach (ISubscriber subscriber in subscribers[msg.MessageType])
             {
                 if (subscriber.Receive(msg))
                     return;

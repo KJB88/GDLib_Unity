@@ -1,7 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace KBGDLib.Comms
+namespace KBGDLib.Communicators
 {
     public enum SERVICE_TYPE
     {
@@ -26,6 +27,8 @@ namespace KBGDLib.Comms
             }
             else
                 services.Add(serviceKey, globalService);
+
+            Debug.Log("SERVICE LOCATOR: Service added under type of " + SERVICE_TYPE.MESSAGE_BROKER.ToString());
         }
 
         /// <summary>
