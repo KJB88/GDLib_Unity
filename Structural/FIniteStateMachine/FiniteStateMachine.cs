@@ -1,6 +1,9 @@
+using UnityEngine;
+
 namespace KBGDLib.Structural
 {
-    public class FiniteStateMachine // FSM for state management
+    // FSM for state management
+    public class FiniteStateMachine : MonoBehaviour
     {
         public void AddStateFromFile(string name) { }
         public void SetCurrentState(string name)
