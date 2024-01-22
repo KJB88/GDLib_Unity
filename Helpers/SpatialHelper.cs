@@ -7,7 +7,7 @@ namespace KBGDLib.Helpers
     {
         public static Transform FindClosestTransform(Transform originTransform, List<Transform> otherEntities)
         {
-            Transform transf = default;
+            Transform? transf = default;
             float closestDistance = Mathf.Infinity;
             foreach (Transform t in otherEntities)
             {

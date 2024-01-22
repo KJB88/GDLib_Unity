@@ -49,7 +49,7 @@ namespace KBGDLib.Communicators
         /// <param name="serviceKey">string: The ID of the Service to be accessed.</param>
         /// <param name="outService">GlobalService: The service to out.</param>
         /// <returns>Bool: Return true if the Service exists with the ServiceLocator. Returns false if the Service does not exist within the ServiceLocator.</returns>
-        public static bool RequestService(SERVICE_TYPE serviceKey, out IService outService)
+        public static bool RequestService(SERVICE_TYPE serviceKey, out IService? outService)
         {
             outService = null;
 

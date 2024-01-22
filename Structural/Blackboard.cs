@@ -1,33 +1,40 @@
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace KBGDLib.Structural
 {
-    public static class BlackboardLibrary
-    {
-        public static string TRANSFORM = "Transform";
-        public static string RIGIDBODY2D = "Rigidbody2D";
-    }
+
+
 
     // The entire blackboard is an approach similar to Blackboards used when developing BehaviourTrees, ideally this would hold wrapped classes via polymorphism (EG: EntityTransform : BlackboardEntry).
     public class Blackboard 
     {
-        private List<BlackboardVariable> blackboard = new List<BlackboardVariable>();
+        private Dictionary<string, object> blackboard = new Dictionary<string, object>();
 
-        public void AddBlackboardData(BlackboardVariable entry)
+        public object this[string key]
         {
-            blackboard.Add(entry);
+            private get => blackboard[key]; // Risk of null reference
+            set => blackboard[key] = value;
         }
-        public bool TryGetBlackboardData(string targetEntryName, out object targetEntryData)
-        {
-            targetEntryData = null;
 
-            if (!blackboard.Exists(e => e.entryName == targetEntryName.ToLower())))
+        public bool ContainsKey(string key) => blackboard.ContainsKey(key);
+
+        public bool TryGetValue<T>(string key, out T var)
+        {
+            var = default;
+
+                if (!blackboard.ContainsKey(key))
                     return false;
+
+                if (blackboard[key] is T t)
+                {
+                    var = t;
+                    return true;
+                }
+
+                return false;
         }
     }
 
-    public abstract class BlackboardVariable
-    {
-
-    }
 }
