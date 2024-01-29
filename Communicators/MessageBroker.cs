@@ -2,7 +2,8 @@ using System.Collections.Generic;
 
 namespace KBGDLib.Communicators
 {
-    public sealed class MessageBroker : IService // Message Broker to update other systems when this entity's state changes.
+    // Message Broker to update other systems when this entity's state changes.
+    public sealed class MessageBroker : IService 
     {
         Dictionary<string, List<ISubscriber>> subscribers = new Dictionary<string, List<ISubscriber>>();
         private readonly SERVICE_TYPE serviceType = SERVICE_TYPE.MESSAGE_BROKER;

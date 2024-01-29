@@ -1,13 +1,8 @@
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 
 namespace KBGDLib.Structural
 {
-
-
-
-    // The entire blackboard is an approach similar to Blackboards used when developing BehaviourTrees, ideally this would hold wrapped classes via polymorphism (EG: EntityTransform : BlackboardEntry).
     public class Blackboard 
     {
         private Dictionary<string, object> blackboard = new Dictionary<string, object>();

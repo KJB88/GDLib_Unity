@@ -1,14 +1,29 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace KBGDLib.Structural
 {
-    // FSM for state management
-    public class FiniteStateMachine : MonoBehaviour
+    /// <summary>
+    /// Finite State Machine.
+    /// It holds the currently updating state using UpdateState.
+    /// Current State can be changed by calling SetState, which will handle transition internally.
+    /// </summary>
+    public class FiniteStateMachine
     {
-        public void AddStateFromFile(string name) { }
-        public void SetCurrentState(string name)
+        private State currentState;
+
+        public FiniteStateMachine(State state) => currentState = state;
+
+        public string GetCurrentStateName() => currentState.StateName;
+
+        public void SetState(State state)
         {
-            // STUB
+            currentState.OnStateExit();
+
+            currentState = state;
+            currentState.OnStateEntry();
         }
+
+        public void UpdateFSM(Blackboard blackboard) => currentState?.UpdateState(blackboard);
     };
 }
