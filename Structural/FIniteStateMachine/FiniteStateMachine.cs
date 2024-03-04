@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace KBGDLib.Structural
 {
@@ -8,11 +7,11 @@ namespace KBGDLib.Structural
     /// It holds the currently updating state using UpdateState.
     /// Current State can be changed by calling SetState, which will handle transition internally.
     /// </summary>
-    public class FiniteStateMachine
+    public class FSM
     {
         private State currentState;
 
-        public FiniteStateMachine(State state) => currentState = state;
+        public FSM(State state) => currentState = state;
 
         public string GetCurrentStateName() => currentState.StateName;
 

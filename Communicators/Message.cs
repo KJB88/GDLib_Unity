@@ -5,6 +5,6 @@
         private string messageType;
         public string MessageType => messageType;
         public Message(string messageType)
-            => this.messageType = messageType;
+            => this.messageType = messageType.ToLower();
     }
 }

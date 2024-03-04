@@ -1,6 +1,9 @@
 namespace KBGDLib.Communicators
 {
-    public interface ISubscriber // Allows subscription to specific messages via the MessageBroker
+    /// <summary>
+    /// Allows subscription to specific messages via the MessageBroker
+    /// </summary>
+    public interface ISubscriber 
     {
         /// <summary>
         /// Act on a received message that the class is subscribed to.

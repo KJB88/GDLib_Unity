@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace KBGDLib.Structural
 {
     /// <summary>
@@ -10,16 +8,16 @@ namespace KBGDLib.Structural
         private string stateName = "DEFAULT";
         public string StateName => stateName;
 
-        protected FiniteStateMachine stateMachine;
+        protected FSM stateMachine;
 
-        public State(string stateName, FiniteStateMachine fsm)
+        public State(string stateName, FSM fsm)
         {
             this.stateName = stateName;
             this.stateMachine = fsm;
         }
 
-        public abstract void OnStateEntry();
-        public abstract void OnStateExit();
+        public abstract void OnStateEntry(Blackboard blackboard);
+        public abstract void OnStateExit(Blackboard blackboard);
 
         public abstract void UpdateState(Blackboard blackboard);
     }

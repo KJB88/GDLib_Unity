@@ -5,7 +5,7 @@ namespace KBGDLib.Structural
 {
     public class Blackboard 
     {
-        private Dictionary<string, object> blackboard = new Dictionary<string, object>();
+        private readonly Dictionary<string, object> blackboard = new Dictionary<string, object>();
 
         public object this[string key]
         {

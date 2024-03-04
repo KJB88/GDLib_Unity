@@ -3,13 +3,13 @@ using System.Collections.Generic;
 namespace KBGDLib.Communicators
 {
     // Message Broker to update other systems when this entity's state changes.
-    public sealed class MessageBroker : IService 
+    public class MessageBroker : IService 
     {
-        Dictionary<string, List<ISubscriber>> subscribers = new Dictionary<string, List<ISubscriber>>();
-        private readonly SERVICE_TYPE serviceType = SERVICE_TYPE.MESSAGE_BROKER;
+        readonly Dictionary<string, List<ISubscriber>> subscribers = new Dictionary<string, List<ISubscriber>>();
 
         public void RegisterSubscriber(string msg, ISubscriber subscriber)
         {
+            msg = msg.ToLower();
             if (!subscribers.ContainsKey(msg))
                 subscribers.Add(msg, new List<ISubscriber> { subscriber });
             else
@@ -23,6 +23,7 @@ namespace KBGDLib.Communicators
         /// <param name="subscriber">ISubscriber: The subscriber to send messages to.</param>
         public void RemoveSubscriber(string msg, ISubscriber subscriber)
         {
+            msg = msg.ToLower();
             if (!subscribers.ContainsKey(msg))
                 return;
 
