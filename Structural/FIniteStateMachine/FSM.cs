@@ -15,12 +15,12 @@ namespace KBGDLib.Structural
 
         public string GetCurrentStateName() => currentState.StateName;
 
-        public void SetState(State state)
+        public void SetState(State state, Blackboard blackboard)
         {
-            currentState.OnStateExit();
+            currentState.OnStateExit(blackboard);
 
             currentState = state;
-            currentState.OnStateEntry();
+            currentState.OnStateEntry(blackboard);
         }
 
         public void UpdateFSM(Blackboard blackboard) => currentState?.UpdateState(blackboard);
