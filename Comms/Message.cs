@@ -1,6 +1,6 @@
-﻿namespace KBGDLib.Communicators
+﻿namespace GDLib.Comms
 {
-    public abstract class Message
+    public class Message
     {
         private string messageType;
         public string MessageType => messageType;

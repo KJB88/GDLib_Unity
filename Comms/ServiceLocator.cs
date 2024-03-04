@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
-using UnityEngine;
 
-namespace KBGDLib.Communicators
+namespace GDLib.Comms
 {
     /// <summary>
     /// Decouple systems that have a large scope from individual sources, minimising use of the Singleton pattern but maintaining large-scope access by low-scope systems
@@ -20,14 +18,9 @@ namespace KBGDLib.Communicators
         {
             serviceKey = serviceKey.ToLower();
             if (services.ContainsKey(serviceKey))
-            {
-                Debug.Log("Service already registered under this service key.");
                 return;
-            }
             else
                 services.Add(serviceKey, globalService);
-
-            Debug.Log("SERVICE LOCATOR: Service added under type of " + serviceKey);
         }
 
         /// <summary>

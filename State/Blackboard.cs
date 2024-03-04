@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 
-namespace KBGDLib.Structural
+namespace GDLib.State
 {
-    public class Blackboard 
+    public class Blackboard
     {
         private readonly Dictionary<string, object> blackboard = new Dictionary<string, object>();
 
@@ -19,16 +18,16 @@ namespace KBGDLib.Structural
         {
             var = default;
 
-                if (!blackboard.ContainsKey(key))
-                    return false;
-
-                if (blackboard[key] is T t)
-                {
-                    var = t;
-                    return true;
-                }
-
+            if (!blackboard.ContainsKey(key))
                 return false;
+
+            if (blackboard[key] is T t)
+            {
+                var = t;
+                return true;
+            }
+
+            return false;
         }
     }
 

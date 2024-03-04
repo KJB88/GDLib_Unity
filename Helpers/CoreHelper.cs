@@ -1,4 +1,4 @@
-﻿namespace KBGDLib.Helpers
+﻿namespace GDLib.Helpers
 {
     public static class CoreHelper
     {

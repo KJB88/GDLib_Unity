@@ -1,4 +1,4 @@
-namespace KBGDLib.Communicators
+namespace GDLib.Comms
 {
     /// <summary>
     /// Allows subscription to specific messages via the MessageBroker

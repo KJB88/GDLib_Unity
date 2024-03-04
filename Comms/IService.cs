@@ -1,4 +1,4 @@
-namespace KBGDLib.Communicators
+namespace GDLib.Comms
 {
     /// <summary>
     /// Interface to define Services via composition

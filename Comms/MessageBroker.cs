@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace KBGDLib.Communicators
+namespace GDLib.Comms
 {
     // Message Broker to update other systems when this entity's state changes.
     public class MessageBroker : IService 

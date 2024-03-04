@@ -1,6 +1,4 @@
-using System.Collections.Generic;
-
-namespace KBGDLib.Structural
+namespace GDLib.State
 {
     /// <summary>
     /// Finite State Machine.
@@ -9,13 +7,17 @@ namespace KBGDLib.Structural
     /// </summary>
     public class FSM
     {
-        private State currentState;
+        private readonly Blackboard blackboard;
+        protected Blackboard Blackboard => blackboard;
+        protected State currentState;
 
-        public FSM(State state) => currentState = state;
+        public FSM(State state, Blackboard blackboard)
+        {
+            this.blackboard = blackboard;
+            SetState(state);
+        }
 
-        public string GetCurrentStateName() => currentState.StateName;
-
-        public void SetState(State state, Blackboard blackboard)
+        public void SetState(State state)
         {
             currentState.OnStateExit(blackboard);
 
@@ -23,6 +25,6 @@ namespace KBGDLib.Structural
             currentState.OnStateEntry(blackboard);
         }
 
-        public void UpdateFSM(Blackboard blackboard) => currentState?.UpdateState(blackboard);
+        public void UpdateFSM() => currentState?.UpdateState(blackboard);
     };
 }
