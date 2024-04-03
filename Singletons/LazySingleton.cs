@@ -9,6 +9,6 @@ namespace GDLib.Singletons
         public static T Instance { get { return instance.Value; } }
 
         /// <summary> Constructor access is set to private to enforce Singleton pattern. </summary>
-        private LazySingleton() { }
+        protected LazySingleton() { }
     }
 }

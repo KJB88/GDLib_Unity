@@ -2,11 +2,12 @@
 <doc>
   <members>
     <!-- Singleton-->
-    <!-- CreateInstance() -->
         <member name="GDLib.Singletons.Singleton">
-          <remarks> Note that to create an instance, this class uses <see cref="Activator"/> which in turn uses Reflection. </remarks>
+          <remarks> Note that to create an instance, this class uses <see cref="Activator"/> which in turn uses System.Reflection. </remarks>
               <typeparam name="T">The <see cref="Type"/> to utilize the Singleton pattern.</typeparam>
         </member>
+
+    <!-- CreateInstance() -->
     <member name="GDLib.Singletons.Singleton.CreateInstance">
       <returns>
         A newly created instance of <typeparamref name="T"/> with <see cref="Type"/> <typeparamref name="T"/>.

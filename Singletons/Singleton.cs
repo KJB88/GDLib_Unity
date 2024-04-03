@@ -10,5 +10,7 @@ namespace GDLib.Singletons
         /// <include file='../Docs/Singletons.xml' path='doc/members/member[@name="GDLib.Singletons.Singleton.CreateInstance"]/*'/>
         protected static T CreateInstance()
             => Activator.CreateInstance(typeof(T), nonPublic: true) as T;
+
+        protected Singleton() { }
     }
 }
