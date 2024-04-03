@@ -1,0 +1,78 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <members>
+    <!-- Blackboard -->
+    <!--ContainsKey() -->
+    <member name="GDLib.StateHandling.Blackboard.ContainsKey">
+      <typeparam name="T">
+        The <see cref="Type"/> of the <see langword="object"/>, used to define the <typeparamref name="TKey"/> lookup.
+      </typeparam>
+      <param name="_">
+        The value (or reference) of the <see langword="object"/> that has the <see cref="Type"/> <typeparamref name="T"/> for the key. This is discarded and not used.
+      </param>
+      <returns>
+        <see langword="true"/> if the <typeparamref name="TKey"/> of <see cref="Type"/> <typeparamref name="T"/> exists within the <see cref="Blackboard"/>; otherwise, <see langword="false"/>.
+      </returns>
+    </member>
+    
+    <!--SetValue() -->
+    <member name="GDLib.StateHandling.Blackboard.SetValue">
+      <remarks>
+        <see cref="SetValue"/> will not replace values unless the <typeparam name="forceReplace"/> <see langword="bool"/> is set to <see langword="true"/> This value defaults to <see langword="false"/>. <para/>
+          To explicitly replace a value if the key already exists, use <see cref="ReplaceValue"/>.
+        </remarks>
+      <typeparam name="T">
+        The <see cref="Type"/> of the <see langword="object"/>, used to define the key lookup.
+      </typeparam>
+       <param name="obj"> The <see langword="object"/> to store within the <see cref="Blackboard"/>. </param>
+      <param name="forceReplace">
+        <see langword="bool"/> value that decides if <see cref="SetValue"/> should force replace an entry or not. If <see langword="true"/>, <see cref="SetValue"/> will force replace the <typeparamref name="TValue"/> located at <typeparamref name="TKey"/> with the given <see langword="object"/>; otherwise, if <see langword="false"/>, it will only attempt to add the <see langword="object"/> if it the <typeparamref name="TKey"/> does not exist.
+      </param>
+       <returns>
+         <see langword="true"/> if the <see langword="object"/> was successfully stored within the <see cref="Blackboard"/> using its <typeparamref name="TKey"/> <see cref="Type"/>; otherwise, <see langword="false"/>.
+       </returns>
+    </member>
+    
+    <!-- ReplaceValue() -->
+    <member name="GDLib.StateHandling.Blackboard.ReplaceValue">
+      <remarks>To set a value only if the key does not exist, use <see cref="SetValue"/>.
+    </remarks>
+       <typeparam name="T">The <see cref="Type"/> of the <typeparamref name="TValue"/>, which is used as its <typeparamref name="TKey"/>.</typeparam>
+       <param name="obj">The <see langword="object"/> to store within the <see cref="Blackboard"/>.
+     </param>
+       <returns>
+         <see langword="true"/> if the value was replaced; otherwise, <see langword="false"/>.
+       </returns>
+    </member>
+
+    <!-- TryGetValue() -->
+    <member name="GDLib.StateHandling.Blackboard.TryGetValue">
+      <typeparam name="T">
+        The <see cref="Type"/> of the <typeparamref name="TValue"/>, which is used as its <typeparamref name="TKey"/>.
+      </typeparam>
+       <param name="obj">The <see langword="out"/> <see langword="object"/> to store the <typeparamref name="TValue"/> held at <see cref="Type"/> <typeparamref name="TKey"/>.</param>
+       <returns>
+         <see langword="true"/> if the value was found and assigned to the <see langword="out"/> argument; otherwise, <see langword="false"/>.
+       </returns>
+    </member>
+    
+    <!-- FSM -->
+    <!-- SetState() -->
+    <member name="GDLib.StateHandling.FSM.SetState">
+      <param name="state">
+        The new <see cref="State"/> to be updated.
+      </param>
+      <param name="blackboard">
+        The <see cref="Blackboard"/> to be passed to <see cref="State"/>s for initialization, modification, entry and exit behaviours.
+      </param>
+    </member>
+
+    <!-- UpdateState() -->
+    <member name="GDLib.StateHandling.FSM.UpdateState">
+      <param name="blackboard">
+        The <see cref="Blackboard"/> that holds the data the <see cref="State"/> will act upon.
+      </param>
+    </member>
+    
+  </members>
+</doc>

@@ -2,42 +2,46 @@ using System.Collections.Generic;
 
 namespace GDLib.Comms
 {
-    // Message Broker to update other systems when this entity's state changes.
-    public class MessageBroker : IService 
+    /// <summary>
+    /// Allows messages to be passed between sender and receiver without coupling the systems together.
+    /// </summary>
+    public class MessageBroker 
     {
+        /// <summary> Registry of subscribers, categorized by the message they are interested in. </summary>
         readonly Dictionary<string, List<ISubscriber>> subscribers = new Dictionary<string, List<ISubscriber>>();
 
-        public void RegisterSubscriber(string msg, ISubscriber subscriber)
+        /// <summary> Register a subscriber to receive messages of the given message type. </summary>
+        /// <include file="../Docs/Comms.xml" path='doc/members/member[@name="GDLib.Comms.MessageBroker.RegisterSubscriber"]/*'/>
+        public void RegisterSubscriber(string messageType, ISubscriber subscriber)
         {
-            msg = msg.ToLower();
-            if (!subscribers.ContainsKey(msg))
-                subscribers.Add(msg, new List<ISubscriber> { subscriber });
+            messageType = messageType.ToLower();
+            if (!subscribers.ContainsKey(messageType))
+                subscribers.Add(messageType, new List<ISubscriber> { subscriber });
             else
-                subscribers[msg].Add(subscriber);
+                subscribers[messageType].Add(subscriber);
         }
 
-        /// <summary>
-        /// Remove a subscriber from listening for specific messages.
-        /// </summary>
-        /// <param name="msg">string: The message to listen for and send through.</param>
-        /// <param name="subscriber">ISubscriber: The subscriber to send messages to.</param>
-        public void RemoveSubscriber(string msg, ISubscriber subscriber)
+        /// <summary> Unregister the subscriber from receiving the given message type. </summary>
+        /// <include file="../Docs/Comms.xml" path='doc/members/member[@name="GDLib.Comms.MessageBroker.UnregisterSubscriber"]/*'/>
+        public void UnregisterSubscriber(string messageType, ISubscriber subscriber)
         {
-            msg = msg.ToLower();
-            if (!subscribers.ContainsKey(msg))
+            messageType = messageType.ToLower();
+            if (!subscribers.ContainsKey(messageType))
                 return;
 
-            subscribers[msg].Remove(subscriber);
+            subscribers[messageType].Remove(subscriber);
         }
 
-        public void SendMessage(Message msg)
+        /// <summary> Send a message to all subsrcibers based on its internal message type. </summary>
+        /// <include file="../Docs/Comms.xml" path='doc/members/member[@name="GDLib.Comms.MessageBroker.SendMessage"]/*'/>
+        public void SendMessage(Message message)
         {
-            if (!subscribers.ContainsKey(msg.MessageType))
+            if (!subscribers.ContainsKey(message.MessageType))
                 return;
 
-            foreach (ISubscriber subscriber in subscribers[msg.MessageType])
+            foreach (ISubscriber subscriber in subscribers[message.MessageType])
             {
-                if (subscriber.Receive(msg))
+                if (subscriber.Receive(message))
                     return;
             }
         }

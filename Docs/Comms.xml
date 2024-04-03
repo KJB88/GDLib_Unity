@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" ?>
+<doc>
+  <members>
+    <!-- GDLib.Comms.ServiceLocator -->
+    <!-- RegisterService() -->
+    <member name="GDLib.Comms.ServiceLocator.RegisterService">
+      <remarks>
+        For replacing an existing service, use <see cref="ReplaceService{T}(T)"/>.
+      </remarks>
+      <param name="service">
+        The service to register with the <see cref="ServiceLocator"/>.
+      </param>
+      <returns>
+        <see langword="true"/> if the <paramref name="service"/> was successfully registered; otherwise, <see langword="false"/>.
+      </returns>
+    </member>
+
+    <!-- UnregisterService() -->
+    <member name="GDLib.Comms.ServiceLocator.UnregisterService">
+      <remarks>
+        For replacing an existing service, use <see cref="ReplaceService{T}(T)"/>.
+      </remarks>
+      <returns>
+        <see langword="true"/> if the service was successfully removed; otherwise, <see langword="false"/>.
+      </returns>
+    </member>
+    <!-- ReplaceService() -->
+    <member name="GDLib.Comms.ServiceLocator.ReplaceService">
+      <remarks>
+        An explicit way to reassign a service.<br/>
+        For registering a new service, use <see cref="RegisterService{T}(T)"/>.<br/>
+        For unregistering an existing service, use <see cref="UnregisterService{T}"/>.
+      </remarks>
+      <param name="service">
+        The service that will replace the value within the registry, located at <see langword="typeof"/>.
+      </param>
+      <returns>
+        <see langname="true"/> if the service was successfully replaced; otherwise, <see langword="false"/>.
+      </returns>
+    </member>
+    
+    <!-- GetService() -->
+    <member name="GDLib.Comms.ServiceLocator.GetService">
+      <param name="service">
+        The service to return to caller, located by its <see cref="Type"/>.
+      </param>
+      <returns>
+        <see langword="true"/> if the <see cref="ServiceLocator"/> holds a service of the given <see cref="Type"/>; otherwise,  <see langword="false"/>.
+      </returns>
+    </member>
+    
+    <!-- GDlib.Comms.ISubscriber  -->
+    <!-- Receive() -->
+    <member name="GDLib.Comms.ISubscriber.Receive">
+      <remarks>
+        Objects derived from <see cref="Message"/> will be upcast to <see cref="Message"/>
+      </remarks>
+      <param name="msg">
+        The <see cref="Message"/> container with header and payload.
+      </param>
+      <returns>
+        <see langword="true"/>  if the message is consumed; otherwise, <see langword="false"/>.
+      </returns>
+    </member>
+
+    <!-- GDLib.Comms.Message Broker -->
+    <!-- RegisterSubscriber() -->
+    <member name="GDLib.Comms.MessageBroker.RegisterSubscriber">
+      <param name="messageType">
+        The <paramref name="messageType"/> of the <see cref="Message"/> to be listened for.
+      </param>
+      <param name="subscriber">
+        The <see cref="ISubscriber"/> to send <see cref="Message"/>s to.
+      </param>
+    </member>
+
+    <!-- UnregisterSubscriber() -->
+    <member name="GDLib.Comms.MessageBroker.UnregisterSubscriber">
+      <param name="messageType">
+        The <paramref name="messageType"/> of the <see cref="Message"/> being listened for.
+      </param>
+      <param name="subscriber">
+        The <see cref="ISubscriber"/> that was receiving <see cref="Message"/>s.
+      </param>
+    </member>
+
+    <!-- SendMessage() -->
+    <member name="GDLib.Comms.MessageBroker.SendMessage">
+      <param name="message">
+        The <see cref="Message"/> to send to registered <see cref="ISubscriber"/>s.
+      </param>
+    </member>
+  </members>
+</doc>

@@ -1,30 +1,27 @@
-namespace GDLib.State
+namespace GDLib.StateHandling
 {
     /// <summary>
-    /// Finite State Machine.
-    /// It holds the currently updating state using UpdateState.
-    /// Current State can be changed by calling SetState, which will handle transition internally.
+    /// Finite State Machine (FSM) holds the current State to be updated.
     /// </summary>
     public class FSM
     {
-        private readonly Blackboard blackboard;
-        protected Blackboard Blackboard => blackboard;
+        /// The current <see cref="State"/> to be updated.
         protected State currentState;
 
-        public FSM(State state, Blackboard blackboard)
-        {
-            this.blackboard = blackboard;
-            SetState(state);
-        }
+        public FSM() { }
 
-        public void SetState(State state)
+        /// <summary> Allows a new state to be set for updating. </summary>
+        /// <include file='../../Docs/StateHandling.xml' path='doc/members/member[@name="GDLib.StateHandling.FSM.SetState"]/*'/>
+        public void SetState(State state, Blackboard blackboard)
         {
-            currentState.OnStateExit(blackboard);
+            currentState?.OnStateExit(blackboard);
 
             currentState = state;
             currentState.OnStateEntry(blackboard);
         }
 
-        public void UpdateFSM() => currentState?.UpdateState(blackboard);
+        /// <summary> Updates the current state. </summary>
+        /// <include file='../../Docs/StateHandling.xml' path='doc/members/member[@name="GDLib.StateHandling.FSM.UpdateState"]/*'/>
+        public void UpdateState(Blackboard blackboard) => currentState?.UpdateState(blackboard);
     };
 }

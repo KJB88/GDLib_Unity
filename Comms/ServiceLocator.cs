@@ -15,12 +15,8 @@ namespace GDLib.Comms
         /// </summary>
         static readonly Dictionary<Type, object> serviceRegistry = new Dictionary<Type, object>();
 
-        /// <summary>
-        /// Register the <paramref name="service"/> with the <see cref="ServiceLocator"/>'s service registry, using its <see cref="Type"/> as the key.<para/>
-        /// For replacing an existing service, use <see cref="ReplaceService{T}(T)"/>.<br/>
-        /// </summary>
-        /// <param name="service">The service to register with the <see cref="ServiceLocator"/>.</param>
-        /// <returns><see langword="true"/> if the <paramref name="service"/> was successfully registered; otherwise, <see langword="false"/>.</returns>
+        /// <summary> Register the service with the service locator, using its type as the key. </summary>
+        /// <include file='../Docs/Comms.xml' path='doc/members/member[@name="GDLib.Comms.ServiceLocator.RegisterService"]/*'/>
         public static bool RegisterService<T>(T service)
         {
             if (serviceRegistry.ContainsKey(typeof(T)))    
@@ -30,22 +26,13 @@ namespace GDLib.Comms
             return true;
         }
 
-        /// <summary>
-        /// Unregister a service from the <see cref="ServiceLocator"/>'s service registry, specified by its <see cref="Type"/>.<para/>
-        /// /// For replacing an existing service, use <see cref="ReplaceService{T}(T)"/>.
-        /// </summary>
-        /// <returns><see langword="true"/> if the service was successfully removed; otherwise, <see langword="false"/>.</returns>
+        /// <summary> Unregister a service from the service locator, specified by its type. </summary>
+        /// <include file='../Docs/Comms.xml' path='doc/members/member[@name="GDLib.Comms.ServiceLocator.UnregisterService"]/*'/>
         public static bool UnregisterService<T>()
             => serviceRegistry.Remove(typeof(T));
 
-        /// <summary>
-        /// Replace a service already registered with the <see cref="ServiceLocator"/> with the given <paramref name="service"/>.<br/>
-        /// An explicit way to reassign a service.<para/> 
-        /// For registering a new service, use <see cref="RegisterService{T}(T)"/>.<br/>
-        /// For unregistering an existing service, use <see cref="UnregisterService{T}"/>.
-        /// </summary>
-        /// <param name="service">The service that will replace the value within the registry, located at <see langword="typeof"/>.</param>
-        /// <returns><see langname="true"/> if the service was successfully replaced. Else, returns <see langword="false"/>.</returns>
+        /// <summary> Replace a service already registered with the service locator with the given service. </summary>
+        /// <include file='../Docs/Comms.xml' path='doc/members/member[@name="GDLib.Comms.ServiceLocator.ReplaceService"]/*'/>
         public static bool ReplaceService<T>(T service)
         {
             if (!serviceRegistry.ContainsKey(typeof(T)))
@@ -55,12 +42,8 @@ namespace GDLib.Comms
             return true;
         }
 
-        /// <summary> 
-        /// Attempts to locate the <paramref name="service"/> within the <see cref="ServiceLocator"/>'s registry and, if found, assigns it to the <see langword="out"/> parameter. 
-        /// </summary>
-        /// <param name="service">The service to return to caller, located by its <see cref="Type"/>.</param>
-        /// <returns> <see langword="true"/> if the <see cref="ServiceLocator"/>'s registry holds a service of the given <see cref="Type"/>. 
-        /// Else, returns <see langword="false"/>.</returns>
+        /// <summary> Attempts to locate the service within the service locator and, if found, assigns it to the out parameter. </summary>
+        /// <include file='../Docs/Comms.xml' path='doc/members/member[@name="GDLib.Comms.ServiceLocator.GetService"]/*'/>
         public static bool GetService<T>(out T service)
         {
             service = default;
