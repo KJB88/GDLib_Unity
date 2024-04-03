@@ -1,6 +1,6 @@
 # README
 
-## \<div align="center">:books: Games Development Library (for Unity) :books:\</div >
+## :books: Games Development Library (for Unity) :books:
 
 [LinkedIn](http://www.linkedin.com/in/kevin-barr1988) | [Website](http://kjb88.github.io) | [Email](mailto:kevinbarr.business@gmail.com) | [Github](https://github.com/KJB88)
 
