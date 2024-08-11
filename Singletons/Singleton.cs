@@ -2,7 +2,7 @@
 
 namespace GDLib.Singletons
 {
-    /// <summary> Base Singleton that holds common data for all Singletons. </summary>
+    /// <summary> Base Singleton that holds common data for all Singletons. Useful for custom implementations. </summary>
     /// <include file='../Docs/Singletons.xml' path='doc/members/member[@name="GDLib.Singletons.Singleton"]/*'/>
     public abstract class Singleton<T> where T : class
     {
